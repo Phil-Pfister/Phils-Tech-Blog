@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
     const postData = await Post.findAll().catch((err) => { 
         res.json(err);
       });
-        const dishes = postData.map((post) => post.get({ plain: true }));
+        const posts = postData.map((post) => post.get({ plain: true }));
         res.render('all', { posts });
       });
   
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
             return;
         }
         const dish = postData.get({ plain: true });
-        res.render('post', post);
+        res.render('post', posts);
       } catch (err) {
           res.status(500).json(err);
       };     
