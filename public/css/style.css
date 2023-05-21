@@ -25,6 +25,20 @@ header {
   background: var(--primary);
   color: var(--secondary);
   border-bottom-style: solid;
+  
+}
+
+
+nav a {
+  color: var(--light);
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+nav a:hover {
+  color: var(--secondary);
+  background-color: var(--dark);
 }
 
 main {
@@ -43,13 +57,14 @@ aside {
 
 nav {
   display: flex;
-  background-color: var(--secondary);
+  background-color: var(--primary);
+  
 }
 
 .menu-container {
   display: flex;
   flex-wrap: wrap;
-  width: 75%;
+  width: 100%;
   min-height: 100%;
   margin: 0px auto;
   border: 3px solid var(--primary);
@@ -102,9 +117,9 @@ nav {
   margin: 20px;
   flex: 0 1 300px;
   padding: 5px;
-  width: 35%;
-  min-height: 100%;
-  min-width: 35%;
+  width: 70%;
+  /* min-height: 35%; */
+  min-width: 70%;
   border: 3px solid var(--primary);
   border-radius: var(--border-radius);
   border-style: solid;
