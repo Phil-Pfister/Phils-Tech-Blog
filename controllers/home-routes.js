@@ -1,10 +1,17 @@
 const router = require('express').Router();
-const { Post, Comment} = require('../models');
+const { Post, Comment, User} = require('../models');
 
 
 // route to get all posts
 router.get('/', async (req, res) => {
-    const postData = await Post.findAll().catch((err) => { 
+    const postData = await Post.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    }).catch((err) => { 
         res.json(err);
       });
         const posts = postData.map((post) => post.get({ plain: true }));
@@ -15,7 +22,15 @@ router.get('/', async (req, res) => {
   router.get('/post/:id', async (req, res) => {
     try{ 
         const postData = await Post.findByPk(req.params.id, {
-          include: [{ model: Comment }]
+          include: [
+            {
+              model: Comment, 
+              attributes: [
+              'comment_text',
+              
+              ], 
+            },
+          ],
         });
         if(!postData) {
             res.status(404).json({message: 'No post with this id!'});
