@@ -3,21 +3,21 @@
     {{post.title}}
   </div>
   <div class="card-body">
-    <p>
+    <h4>
      
       {{post.post_content}}
-    </p>
+    </h4>
     <p>
       Posted by:
       {{post.user.username}} on {{format_date post.createdAt}}
     </p>
     <p>Comments:</p>
-    <div class="comment">
+    
       {{#each post.comments}}
       {{> comment}}
       {{/each}}
      
-    </div>
+  
     <div class="add-comment-container">
       <h3>Add a Comment</h3>
       <form class="new-comment-form" id="new-comment">

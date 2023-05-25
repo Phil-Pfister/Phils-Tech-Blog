@@ -80,8 +80,8 @@ nav {
 .add-post-container {
   display: flex;
   flex-wrap: wrap;
-  width: 50%;
-  min-width: 35%;
+  width: 100%;
+  /* min-width: 35%; */
   margin: 5px auto;
   border: 3px solid var(--primary);
   border-radius: var(--border-radius);
@@ -170,7 +170,9 @@ nav {
 
 .comment {
   padding: 1%;
-  
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 /* LAYOUT */

@@ -3,7 +3,7 @@ const { Post, Comment, User} = require('../models');
 const withAuth = require('../utils/auth');
 
 
-// route to get all posts
+// route to get all posts for homepage
 router.get('/', async (req, res) => {
     const postData = await Post.findAll({
       include: [
@@ -54,7 +54,7 @@ router.get('/', async (req, res) => {
           res.status(500).json(err);
       };     
   });
-
+  // get user dashboard with posts and comments
   router.get('/dashboard', withAuth, async (req, res) => {
     try {
       const dashData = await Post.findAll({
