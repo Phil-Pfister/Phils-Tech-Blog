@@ -1,22 +1,42 @@
-<div class="dish-card">
-  <div class="dish-card-header">
-    {{title}}
+<div class="post-card">
+  <div class="post-card-header">
+    {{post.title}}
   </div>
   <div class="card-body">
     <p>
-      Content:
-      {{post_content}}
+     
+      {{post.post_content}}
     </p>
     <p>
       Posted by:
-      {{user_name}} on {{created_on}}
+      {{post.user.username}} on {{format_date post.createdAt}}
     </p>
-    <p>
-      {{comment_text}}
-    </p>
-    
+    <p>Comments:</p>
+    <div class="comment">
+      {{#each post.comments}}
+      {{> comment}}
+      {{/each}}
      
+    </div>
+    <div class="add-comment-container">
+      <h3>Add a Comment</h3>
+      <form class="new-comment-form" id="new-comment">
+        <div class="form-group">
+          <label for="comment-title">Topic:</label>
+          <input type="text" value="{{post.title}}">
+        </div>
+        <div class="form-group">
+          <label for="comment-text">Comment:</label>
+          <textarea name="comment-text" id="comment-text" class="form-input" placeholder="add comment here"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    
+    </div>
+    
   </div>
 </div>
-
+  <script src="../js/add-comment.js"></script>
 

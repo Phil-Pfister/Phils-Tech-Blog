@@ -1,16 +1,16 @@
-<div class="dish-card">
+<div class="post-card">
   <a href="/post/{{id}}">  
-  <div class="dish-card-header">
+  <div class="post-card-header">
     {{title}}
   </div>
   <div class="card-body">
     <p>
-      Content:
+      
       {{post_content}}
     </p>
     <p>
       user:
-      {{user.username}}
+      {{user.username}} {{format_date created_on}}
     </p>
     
      

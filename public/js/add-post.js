@@ -1,28 +1,40 @@
-async function newFormHandler(event) {
+const  newFormHandler = async (event) => {
   event.preventDefault();
-  // const dish_name = document.querySelector('#dish_name').value;
-  // const description = document.querySelector('#description').value;
-  // const guest_name = document.querySelector('#guest_name').value;
-  // const has_nuts = document.querySelector('#has_nuts:checked') ? true : false;
-
-  const response = await fetch(`/api/dish`, {
+  const title = document.querySelector('#post-title').value;
+  const post_content = document.querySelector('#post-content').value;
+  
+  const response = await fetch(`/api/post`, {
     method: 'POST',
-    body: JSON.stringify({
-      dish_name,
-      description,
-      guest_name,
-      has_nuts,
-    }),
+    body: JSON.stringify({ title, post_content }),
     headers: {
       'Content-Type': 'application/json',
     },
   });
 
   if (response.ok) {
-    document.location.replace('/');
+    document.location.replace('/dashboard');
   } else {
-    alert('Failed to add dish');
+    alert('Failed to add post');
   }
-}
+};
 
-document.querySelector('.new-dish-form').addEventListener('submit', newFormHandler);
+const delButtonHandler = async (event) => {
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+    
+    const response = await fetch(`/api/post/${id}`, {
+      method: 'DELETE',
+    });
+    
+    if (response.ok) {
+      document.location.replace('/dashboard');
+    } else {
+      alert('Failed to delete project');
+    }
+  }
+};
+
+
+document.querySelector('#new-post').addEventListener('submit', newFormHandler);
+document.querySelector('.post-list').addEventListener('click', delButtonHandler);
+
