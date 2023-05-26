@@ -1,0 +1,39 @@
+<div class="post-card">
+  <div class="post-card-header">
+    {{post.title}}
+  </div>
+  <div class="card-body">
+    <h4>
+     
+      {{post.post_content}}
+    </h4>
+    <p>
+      Posted by:
+      {{post.user.username}} on {{format_date post.createdAt}}
+    </p>
+  
+    
+     
+  
+    <div class="update-post-container">
+      <h3>Edit your post</h3>
+      <form class="update-post-form" id="update-post">
+        <div class="form-group">
+          <label for="comment-title">Topic:</label>
+          <input class="form-input" id = "edit-title" type="text" value="{{post.title}}">
+        </div>
+        <div class="form-group">
+          <label for="edit-post-text">Content:</label>
+          <input name="edit-post-text" id="edit-content" class="form-input" type="text" value="{{post.post_content}}"></input>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" data-id="{{post.id}}">Submit</button>
+        </div>
+      </form>
+    
+    </div>
+    
+  </div>
+</div>
+  <script src="/js/edit-post.js"></script>
+
