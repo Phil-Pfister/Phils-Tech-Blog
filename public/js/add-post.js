@@ -1,3 +1,4 @@
+// new post form handler and api call
 const  newFormHandler = async (event) => {
   event.preventDefault();
   const title = document.querySelector('#post-title').value;
@@ -17,7 +18,7 @@ const  newFormHandler = async (event) => {
     alert('Failed to add post');
   }
 };
-
+//delete button handler and api call
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');

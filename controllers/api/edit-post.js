@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// gets post into edit form
 router.get('/:id', withAuth, async (req, res) => {
     try{ 
         const editData = await Post.findByPk(req.params.id, {
@@ -26,7 +27,7 @@ router.get('/:id', withAuth, async (req, res) => {
           res.status(500).json(err);
       };     
   });
-
+// route to edit form
   router.put('/:id', withAuth, async (req, res) => {
     const title = req.body.editTitle;
     const post_content = req.body.editContent;
